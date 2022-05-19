@@ -4,6 +4,7 @@ import os
 import time
 from openpyxl import Workbook
 import regex as re
+import pyautogui
 
 acad = win32com.client.Dispatch("ZWCAD.Application")
 root = r'''//TX-FS/usuarios/Engenharia/Pedidos'''
@@ -86,9 +87,9 @@ for dirpath, dirnames, filenames in os.walk(root):
                             if regex:
                                 Notas = entity.TextString.replace('\P', ' - ')
                                 ws.cell(row=j, column=8).value = str(Notas)
-               
+                pyautogui.moveTo(300,300)
                 acad.Documents.Close()
-                time.sleep(2)
+                #time.sleep(2)
                 #Retorno pro inicio da coluna nas iterações do excel
                 i = 0
     except:
